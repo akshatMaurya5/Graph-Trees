@@ -1,0 +1,18 @@
+---------------------------------------------------------------
+class 1
+
+-> sum of degrees of all nodes = 2*(n-1).
+-> diameter of a tree always contains two leaf nodes.
+-> to bipartite a tree => root the tree and assign clr levelwise.
+->
+
+---------------------------------------------------------------
+class 2
+
+-> Diameter of a tree: 
+	- pick a random node X, do DFS from X and find the node with max dist from X say Y
+	- do DFS from Y and find the node with max distance from node Y say Z
+	- Diameter = dist(Y,Z)
+
+ -> In-time Out-time concept to find if Node X is ancestor of Node Y
+	- X_inTime < Y_inTime < Y_outTime < X_out_time
