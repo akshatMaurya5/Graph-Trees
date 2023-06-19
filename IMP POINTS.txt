@@ -15,4 +15,10 @@ class 2
 	- Diameter = dist(Y,Z)
 
  -> In-time Out-time concept to find if Node X is ancestor of Node Y
-	- X_inTime < Y_inTime < Y_outTime < X_out_time
+	- X_inTime < Y_inTime < Y_outTime < X_out_time	
+
+
+---------------------------------------------------------------------
+class 3
+
+-> 
