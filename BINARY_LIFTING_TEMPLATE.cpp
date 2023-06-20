@@ -1,9 +1,10 @@
-class BinaryLifting {
+class BinaryLifting
+{
 public:
-    vector<vector<int>>parents;
+    vector<vector<int>> parents;
     int n;
-    vector<int>depth;
-    BinaryLifting(int root, int n, vector<vector<int>>&adj)
+    vector<int> depth;
+    BinaryLifting(int root, int n, vector<vector<int>> &adj)
     {
         this->n = n;
         depth.resize(n, 0);
@@ -16,7 +17,14 @@ public:
         // deb(depth);
     }
 
-    for (int k = 1; k <= log2(n); k++)
+    void fillParents(int root, vector<vector<int>> &adj)
+    {
+        // marking first parents
+        dfs(root, -1, adj, parents[0]);
+
+        // marking other parents
+
+        for (int k = 1; k <= log2(n); k++)
         {
             for (int i = 0; i < n; i++)
             {
@@ -36,6 +44,7 @@ public:
                 }
             }
         }
+    }
 
     void dfs(int node, int par, vector<vector<int>> &adj, vector<int> &firstParent)
     {
@@ -51,7 +60,6 @@ public:
         }
     }
 
-
     int kthParent(int node, int k)
     {
         int ans = -1;
@@ -59,11 +67,12 @@ public:
 
         for (int i = 0; i <= log2(n); i++)
         {
-            if (k & (1 << i)) //Kth bit set?
+            if (k & (1 << i)) // Kth bit set?
             {
                 node = parents[i][node];
 
-                if (node == -1) {
+                if (node == -1)
+                {
                     break;
                 }
             }
@@ -74,11 +83,11 @@ public:
     int lca(int a, int b)
     {
         // deb(a, b);
-        //make 'a' as deepest node
-        if (depth[a] < depth[b]) {
+        // make 'a' as deepest node
+        if (depth[a] < depth[b])
+        {
             swap(a, b);
         }
-
 
         while (depth[a] > depth[b])
         {
