@@ -28,14 +28,6 @@ public:
         {
             for (int i = 0; i < n; i++)
             {
-                // parent [k][i]  -> 2^(k-1)th parent of node i
-
-                // i -> intermeditate -> goal
-
-                // goal = 2^k th parent of node i
-                // goal = 2^(k-1) th parent of node intermediate
-                // intermediate = 2^(k-1)th parent of node i
-
                 int intermediate = parents[k - 1][i];
 
                 if (intermediate != -1)
@@ -81,6 +73,36 @@ public:
     }
 
     int lca(int a, int b)
+    { // O(logn)
+
+        if (depth[a] < depth[b])
+        {
+            swap(a, b);
+        }
+
+        int diff = depth[a] - depth[b];
+        a = kthParent(a, diff);
+
+        if (a == b)
+            return a;
+
+        // same as finding the last false in binary search
+        for (int k = log2(n); k >= 0; k--)
+        {
+            int parA = parents[k][a];
+            int parB = parents[k][b];
+
+            if (parA != parB)
+            {
+                a = parA;
+                b = parB;
+            }
+        }
+
+        return parents[0][a];
+    }
+
+    int lca_brute(int a, int b)
     {
         // deb(a, b);
         // make 'a' as deepest node
