@@ -29,7 +29,7 @@ void dfs(int node, int par, vector<vector<int>> &adj, vector<int> &firstParent)
         {
             dfs(it, node, adj, firstParent);
         }
-    }
+    }   
 }
 
 int kthParent(int node, int k, vector<vector<int>> &parent)
